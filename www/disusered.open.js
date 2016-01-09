@@ -43,6 +43,9 @@ var downloadAndOpen = function(url, success, error, trustAllCertificates) {
   var ios = cordova.file.cacheDirectory;
   var ext = cordova.file.externalCacheDirectory;
   var dir = (ext) ? ext : ios;
+  if (!uri.match('http')) {
+    url = location.protocol + location.hostname + location.port + '/' + url;
+  }
   var name = url.substring(url.lastIndexOf('/') + 1);
   var path = dir + name;
 
@@ -50,7 +53,6 @@ var downloadAndOpen = function(url, success, error, trustAllCertificates) {
     // Defaults to false
     trustAllCertificates = false;
   }
-
   ft.download(url, path,
       function done(entry) {
         var file = entry.toURL();
