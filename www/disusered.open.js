@@ -43,7 +43,7 @@ var downloadAndOpen = function(url, success, error, trustAllCertificates) {
   var ios = cordova.file.cacheDirectory;
   var ext = cordova.file.externalCacheDirectory;
   var dir = (ext) ? ext : ios;
-  if (!uri.match('http')) {
+  if (!url.match('http')) {
     url = location.protocol + location.hostname + location.port + '/' + url;
   }
   var name = url.substring(url.lastIndexOf('/') + 1);
