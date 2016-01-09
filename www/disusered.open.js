@@ -38,7 +38,7 @@ exports.open = function(uri, success, error, trustAllCertificates) {
  * @param {Boolean} trustAllCertificates Trusts any certificate when the connection is done over HTTPS.
  * @returns {void}
  */
-function downloadAndOpen(url, success, error, trustAllCertificates) {
+var downloadAndOpen = function (url, success, error, trustAllCertificates) {
   var ft = new FileTransfer();
   var ios = cordova.file.cacheDirectory;
   var ext = cordova.file.externalCacheDirectory;
@@ -60,8 +60,8 @@ function downloadAndOpen(url, success, error, trustAllCertificates) {
       onError.bind(this, error),
       trustAllCertificates
   );
-}
-
+};
+exports.downloadAndOpen = downloadAndOpen;
 /**
  * onSuccess
  *
